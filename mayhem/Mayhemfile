@@ -1,0 +1,6 @@
+project: boytacean
+target: fuzz_boytacean
+
+cmds:
+    - cmd: ./fuzz_boytacean
+      libfuzzer: true
