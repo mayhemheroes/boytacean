@@ -9,6 +9,7 @@ RUN cargo install -f cargo-fuzz
 
 ADD . /boytacean
 WORKDIR /boytacean
+RUN cargo build
 RUN RUST_BACKTRACE=1 cargo +nightly fuzz build 
 
 FROM debian:bookworm
