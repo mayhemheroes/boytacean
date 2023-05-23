@@ -8,7 +8,7 @@ RUN rustup component add rust-src
 RUN cargo install -f cargo-fuzz
 
 ADD . /boytacean
-WORKDIR /boytacean/fuzz
+WORKDIR /boytacean
 RUN RUST_BACKTRACE=1 cargo +nightly fuzz build 
 
 FROM debian:bookworm

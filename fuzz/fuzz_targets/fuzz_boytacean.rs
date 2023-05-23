@@ -7,7 +7,7 @@ use boytacean::{
 
 fuzz_target!(|data: &[u8]| {
     let mut rom = vec![0 as u8; 8196];
-    rom[0..data.len()].copy_from_slice(data);
+    rom[0x100..data.len() + 0x100].copy_from_slice(data);
     let mut game_boy = GameBoy::new(Some(GameBoyMode::Dmg));
     game_boy.set_ppu_enabled(true);
     game_boy.set_apu_enabled(true);
