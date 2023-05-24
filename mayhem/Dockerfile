@@ -14,3 +14,4 @@ RUN RUST_BACKTRACE=1 cargo +nightly fuzz build
 
 FROM debian:bookworm
 COPY --from=builder /boytacean/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz_boytacean /
+COPY --from=builder /boytacean/fuzz/corpus /fuzz/corpus
