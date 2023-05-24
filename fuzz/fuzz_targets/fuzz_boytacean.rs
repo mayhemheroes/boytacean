@@ -27,7 +27,7 @@ fn convert_to_valid_rom(rom_num: u8) -> u8 {
 
 fuzz_target!(|data: &[u8]| {
     let mut rom = vec![0 as u8; 1024 * 256];
-    rom[0x00..data.len() + 0x00].copy_from_slice(data);
+    rom[0x100..data.len() + 0x100].copy_from_slice(data);
     rom[0x0147] = convert_to_valid_rom(rom[0x0147]);
     rom[0x0148] = rom[0x0148] % 10;
     rom[0x0149] = rom[0x0149] % 7;
@@ -40,7 +40,7 @@ fuzz_target!(|data: &[u8]| {
     game_boy.load_rom(&rom);
     game_boy.cpu().boot();
 
-    for a in 0..1024 {
+    for _ in 0..256 {
         // println!("{0}", a);
         game_boy.clock();
     }

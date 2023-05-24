@@ -1,6 +1,9 @@
 project: boytacean
 target: fuzz_boytacean
 
+testsuite:
+    - file:///fuzz/corpus
+
 cmds:
     - cmd: ./fuzz_boytacean
       libfuzzer: true
